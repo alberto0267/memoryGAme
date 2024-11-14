@@ -79,12 +79,26 @@
   padding-bottom: 1rem;
 }
 
-/* 
-.bigSquare:hover{
-  background-color: #000;
-  border: 10px solid red;
-} */
 .square {
+  width: 8rem;
+  /* position: absolute; */
+  height: 10rem;
+  /* background-image: url(./assets/img.jpeg); */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #000;
+  cursor: pointer;
+  border: 1px solid rgb(43, 43, 43);
+  border-radius: 5%;
+ z-index: 0;
+
+}
+.cardFront{
+  /* border: 10px solid blue; */
+  z-index: 10;
+  position: absolute;
+color: red;
   width: 8rem;
   height: 10rem;
   background-image: url(./assets/img.jpeg);
@@ -95,109 +109,216 @@
   cursor: pointer;
   border: 1px solid rgb(43, 43, 43);
   border-radius: 5%;
-  /* position: absolute; */
-
-  /* animation: movement 20s ease-in forwards; */
+  /* animation: active 3s alternate; */
+ 
+}
+.cardBack{
+  z-index: 1;
+  /* border: 3px solid red; */
 }
 
-
-
-
-/* 
- .square:nth-child(1){ 
-  opacity: 0;
-  animation: movement 2s ease-in forwards;  
-animation-delay: 0s;
- }
- .square:nth-child(2){ 
-  opacity: 0;
-  animation: movement 4s ease-in forwards;  
-animation-delay: 1s;
- }
- .square:nth-child(3){ 
-  opacity: 0;
-  animation: movement 4s ease-in forwards;  
-animation-delay: 2s;
- }
- .square:nth-child(4){ 
-  opacity: 0;
-  animation: movement 2s ease-in forwards;  
-animation-delay: 0s;
- }
-
- .square:nth-child(5){ 
-  opacity: 0;
-  animation: movement 2s ease-in forwards;  
-animation-delay: 0s;
- }
- .square:nth-child(6){ 
-  opacity: 0;
-  animation: movement 4s ease-in forwards;  
-animation-delay: 1s;
- }
- .square:nth-child(7){ 
-  opacity: 0;
-  animation: movement 4s ease-in forwards;  
-animation-delay: 2s;
- }
- .square:nth-child(8){ 
-  opacity: 0;
-  animation: movement 2s ease-in forwards;  
-animation-delay: 0s;
- }
- .square:nth-child(9){ 
-  opacity: 0;
-  animation: movement 2s ease-in forwards;  
-animation-delay: 0s;
- } */
-/* 
-@keyframes movement {
-  30% {
- opacity: 0.4;
-  }
-  60% {
-    opacity: 0.8;
-  }
-  100% {
-   
-    opacity: 1;
-  }
+/* .squareAnimation {
+  animation: active 5s forwards;
 } */
+
+/* @keyframes flip {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(180deg);
+    z-index: 0;
+   }
+} */
+img[alt="gatos"]{
+  position: absolute;
+  width: 8rem;
+  height: 10rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #000;
+  cursor: pointer;
+  border: 1px solid rgb(43, 43, 43);
+  border-radius: 5%;
+  z-index: 0;
+  
+}
 
 
 .square:hover {
   box-shadow: -1px 0px 5px 4.5px rgba(93, 90, 92, 0.357);
+  
 }
-.square:active {
-  animation: active 1s ease-in forwards;
+.cardFrontAnimation{
+  animation: active 2s alternate;
+  background-color: #888;
 }
+/* img[alt="gatos"]:active{
+  position: absolute;
+  z-index: 1;
+} */
+
 
 @keyframes active {
   30% {
     transform: rotateY(45deg);
+    transition: 1s;
   }
   60% {
     transform: rotateY(90deg);
+    transition: 1s;
   }
   80% {
     transform: rotateY(180deg);
+    transition: 1s;
   }
   100% {
     transform: rotateY(180deg);
     background-color: blue;
-    background-image: url(./assets/maxresdefault.jpg);
+    /* background-image: url(./assets/maxresdefault.jpg); */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    z-index: 0;
+    /* opacity: 1;
+    display: none; */
   }
 }
 
+
+
+
 .buttonStart {
-  display: flex;
   position: relative;
   top: 16rem;
-  left: 18rem;
+  right:1rem;
+  /* opacity: .5; */
+  transition: all .3s ease;
+
 }
+.buttonStart:hover{
+  background: none;
+
+}
+
+
+
+
+
+
 .reversed {
   background-color: ;
+}
+.hidden{
+
+  opacity: 0;
+}
+
+.winner{
+display: flex;
+position: relative;
+justify-content: center;
+background-color: rgba(20, 23, 25, 0.313); 
+top: 2.5rem;
+left: 15rem;
+color: red;
+width:12rem;
+font-weight: bold;
+/* border: 2px solid gray; */
+box-shadow: -10px 2px 10px gray;
+}
+
+
+.square {
+  perspective: 1000px;
+  
+}
+
+.moves {
+  position: relative;
+  width: 100px;
+  gap: 100rem;
+  height: 100px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.flipped .cardFront {
+  transform: rotateY(180deg);
+}
+
+.flipped .cardBack {
+  transform: rotateY(0deg);
+}
+
+.cardFront,
+.cardBack {
+  backface-visibility: hidden;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  width: 8rem;
+ 
+  height: 10rem;
+ 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 2px solid #000;
+  cursor: pointer;
+  border: 1px solid rgb(43, 43, 43);
+  border-radius: 5%;
+}
+
+.cardFront {
+  background-color: #892626;
+  color: #830f0f;
+}
+
+.cardBack {
+  background-color: #333;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+@media ( max-width:480px){
+  .squares{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+  }
+  .square,
+  .cardFront,
+  .cardBack{
+    width: 5.5rem;
+    height: 9.5rem;
+  }
+.buttonStart{
+  top: 22rem;
+  animation: button 1s ease-in forwards;
+  /* cursor: pointer; */
+}
+  .tittle{
+    font-size: .6rem;
+  }
+  .blackBoard{
+    /* display: ; */
+   /* background-color: aqua; */
+   width: 21rem;
+   height: 45rem;
+   
+  }
+
+
+  @keyframes button {
+    to{
+      transform: scale(1.5,1.5);
+
+    }
+    from{
+      transform: scale(1,1);
+    }
+    
+  }
 }
