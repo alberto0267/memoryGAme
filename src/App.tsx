@@ -170,7 +170,7 @@ let ganador;
           </div>
         ))}
       </div>
-      <div className="winner">{winner}</div>
+      <div className="winner"><p>{winner}</p></div>
     </>
   );
 }
